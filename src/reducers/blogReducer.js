@@ -1,7 +1,30 @@
-const blogReducer = (state = [], action) => {
+const initialState = {
+  blogs: [
+    {
+      title: 'this world',
+      author: 'RQ',
+      content: 'qwqewrwer',
+      likes: 0,
+      id: 1,
+      date: "04-05-2021"
+    },
+    {
+      title: 'is awesome',
+      author: 'RQ',
+      content: 'woooooo',
+      likes: 0,
+      id: 2,
+      date: "05-05-2021"
+    }
+  ],
+  filter: 'ASCENDING'
+}
+
+const blogReducer = (state = initialState, action) => {
+    //console.log('ACTION: ', action)
     switch(action.type) {
       case 'NEW_BLOG':
-        return state.concat(action.data)
+        return state.blogs.concat(action.data)
       case 'LIKE': {
         const id = action.data.id
         const blogToChange = state.find(blog => blog.id === id)
